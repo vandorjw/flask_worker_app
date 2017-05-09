@@ -1,5 +1,5 @@
 git_uri: https://github.com/vandorjw/flask_worker_app
-app_folder: .
+app_folder: flask
 versions_s3_bucket: gale-eb-versions
 application_name: flask_worker_test
 eb_application_name: flask_worker_test
