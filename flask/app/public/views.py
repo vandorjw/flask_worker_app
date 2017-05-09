@@ -33,7 +33,7 @@ def submit_to_queue():
 
 @blueprint.route('/random', methods=['POST', ])
 def random_request():
-    sleep_time = randint(60, 120)
+    sleep_time = randint(1, 120)
     time.sleep(sleep_time)
     print("do work for {}".format(sleep_time))
     return "do work for {}".format(sleep_time)
