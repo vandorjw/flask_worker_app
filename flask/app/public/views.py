@@ -1,13 +1,25 @@
 # -*- coding: utf-8 -*-
 """Public section"""
+from decimal import Decimal
 from datetime import datetime
 import json
+import os
 import time
 from random import randint
 from flask import Blueprint
 from app.sqs import submit_to_sqs
 
 blueprint = Blueprint('public', __name__)
+
+
+def bellardBig(n):
+    pi = Decimal(0)
+    k = 0
+    while k < n:
+        pi += (Decimal(-1)**k/(1024**k))*( Decimal(256)/(10*k+1) + Decimal(1)/(10*k+9) - Decimal(64)/(10*k+3) - Decimal(32)/(4*k+1) - Decimal(4)/(10*k+5) - Decimal(4)/(10*k+7) -Decimal(1)/(4*k+3))
+        k += 1
+    pi = pi * 1/(2**6)
+    return pi
 
 
 @blueprint.route('/', methods=['GET', 'POST'])
@@ -33,7 +45,8 @@ def submit_to_queue():
 
 @blueprint.route('/random', methods=['POST', ])
 def random_request():
-    sleep_time = randint(1, 120)
-    time.sleep(sleep_time)
-    print("do work for {}".format(sleep_time))
-    return "do work for {}".format(sleep_time)
+    pid = os.getpid()
+    pi_digits = randint(1000, 4000)
+    bellardBig(pi_digits)
+    print("Worker {} calculated pi to {} decimal places".format(pid, pi_digits))
+    return "Worker {} calculated pi to {} decimal places".format(pid, pi_digits)
