@@ -31,7 +31,7 @@ def submit_to_queue():
         return "failure"
 
 
-@blueprint.route('/random', methods=['GET', ])
+@blueprint.route('/random', methods=['POST', ])
 def random_request():
     sleep_time = randint(60, 300)
     time.sleep(sleep_time)
