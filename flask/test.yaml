@@ -1,0 +1,16 @@
+git_uri: https://github.com/vandorjw/flask_worker_app
+app_folder: .
+versions_s3_bucket: gale-eb-versions
+application_name: flask_worker_test
+eb_application_name: flask_worker_test
+eb_configuration_name: default
+region: us-west-2
+
+copy_files:
+    - app
+    - Dockerfile
+    - .ebextensions
+    - entrypoint.sh
+    - flask_app.py
+    - gunicorn_config.py
+    - requirements.txt
