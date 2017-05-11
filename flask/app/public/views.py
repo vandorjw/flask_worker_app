@@ -47,6 +47,13 @@ def submit_to_queue():
 def random_request():
     min_val = os.getenv('PI_MIN_VALUE', 1000)
     max_val = os.getenv('PI_MAX_VALUE', 4000)
+    try:
+        min_val = int(min_val)
+        max_val = int(max_val)
+    except:
+        min_val = 1000
+        max_val = 4000
+
     pid = os.getpid()
     pi_digits = randint(min_val, max_val)
     bellardBig(pi_digits)
