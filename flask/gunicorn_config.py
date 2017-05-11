@@ -1,6 +1,6 @@
 # gunicorn.py
 bind = '0.0.0.0:5000'
 backlog = 512
-workers = 8
-worker_class = 'gthread'
+workers = 10
+worker_class = 'sync'
 timeout = 600
