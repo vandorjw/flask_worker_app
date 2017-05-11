@@ -45,8 +45,10 @@ def submit_to_queue():
 
 @blueprint.route('/random', methods=['POST', ])
 def random_request():
+    min_val = os.getenv('PI_MIN_VALUE', 1000)
+    max_val = os.getenv('PI_MAX_VALUE', 4000)
     pid = os.getpid()
-    pi_digits = randint(1000, 4000)
+    pi_digits = randint(min_val, max_val)
     bellardBig(pi_digits)
     print("Worker {} calculated pi to {} decimal places".format(pid, pi_digits))
     return "Worker {} calculated pi to {} decimal places".format(pid, pi_digits)
