@@ -19,7 +19,6 @@ node {
        }
     }
     catch (err) {
-        sh 'docker-compose down --remove-orphans'
         currentBuild.result = "FAILURE"
         throw err
     }
