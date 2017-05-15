@@ -7,8 +7,7 @@ node {
             checkout scm
        }
        stage('Build Docker'){
-            sh 'cd flask'
-            sh 'docker build .'
+            sh 'docker build flask'
             sh 'docker image ls'
        }
        stage('Archive Build') {
